@@ -1,0 +1,179 @@
+@import "../assets/styles/variables";
+@import "../assets/styles/mixins";
+
+@include respond-to ($breakpoint-lg) {
+  // HERO
+  .hero {
+    &__wrapper {
+      padding: 100px 0 100px 60px;
+    }
+
+    &__content {
+      max-width: 90%;
+    }
+
+    &__btn {
+      .hero__btn-content {
+        margin-right: 10px;
+      }
+
+      &-img {
+        opacity: 1;
+      }
+    }
+  }
+
+  // COFFEE
+  .coffee {
+    &__image {
+      margin-bottom: 17px;
+
+      & img {
+        min-height: 480px;
+      }
+    }
+
+    &__slider {
+      max-width: 70%;
+    }
+
+    &__prev {
+      padding-left: 0px;
+    }
+
+    &__next {
+      margin-right: 0;
+    }
+  }
+
+  // ABOUT
+  .about {
+    $offsets: 0;
+
+    &__column {
+      flex: none;
+      width: calc((100% - (#{$gap} * #{$offsets})) / (#{$offsets} + 1));
+    }
+
+    &__items {
+      &--small {
+        display: none;
+      }
+    }
+
+    &__img {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  // APPLICATION
+  .application {
+    $offsets: 0;
+
+    &__content {
+      padding: 0;
+      width: calc((100% - (#{$main-gap} * #{$offsets})) / (#{$offsets} + 1));
+    }
+
+    &__bg {
+      width: calc((100% - (#{$main-gap} * #{$offsets})) / (#{$offsets} + 1));
+      min-height: 630px;
+    }
+  }
+}
+
+
+@include respond-to ($breakpoint-md) {
+  .hero {
+    &__title {
+      font-size: 5rem;
+    }
+  }
+
+  .coffee {
+    &__image img {
+      min-height: 400px;
+    }
+  }
+}
+
+@include respond-to ($breakpoint-sm-anc) {
+  .coffee {
+    &__prev,
+    &__next {
+      display: none;
+    }
+
+    // &__content {
+    //   max-width: 100%;
+    // }
+  }
+}
+
+@include respond-to ($breakpoint-sm) {
+  .hero {
+    &__title {
+      font-size: 4.5rem;
+    }
+
+    &__wrapper {
+      padding: 60px 0 60px 30px;
+    }
+  }
+
+  .application {
+    &__wrapper {
+      gap: 55px;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@include respond-to ($breakpoint-xs) {
+  .hero {
+    &__title {
+      font-size: 4.2rem;
+      line-height: 1.15;
+    }
+
+    &__wrapper {
+      padding: 60px 0 60px 18px;
+    }
+
+    &__content {
+      max-width: 97%;
+    }
+
+    &__descr {
+      margin-bottom: 38px;
+    }
+  }
+
+  .coffee {
+    &__slider {
+      max-width: 100%;
+    }
+
+    &__image {
+      margin-bottom: 16px;
+
+      & img {
+        min-height: 348px;
+      }
+    }
+  }
+
+  .application {
+    &__buttons {
+      flex-wrap: wrap;
+    }
+
+    &__wrapper {
+      gap: 40px;
+    }
+
+    &__bg {
+      min-height: 348px;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+@include respond-to (1200px) {
+  .products {
+    $offsets: 2;
+
+    &__items {
+      width: calc((100% - (#{$gap} * #{$offsets})) / (#{$offsets} + 1));
+    }
+  }
+}
+
+@include respond-to ($breakpoint-lg) {
+  .products {
+    $offsets: 1;
+
+    &__top {
+      margin: 0 auto;
+      max-width: 97%;
+    }
+
+    &__item {
+      margin-bottom: 40px;
+      padding: 0 14px;
+      padding-top: 39px;
+    }
+
+    &__items {
+      width: calc((100% - (#{$gap} * #{$offsets})) / (#{$offsets} + 1));
+
+      &:nth-child(n + 5) {
+        display: none;
+      }
+    }
+
+    &__info {
+      padding: 20px 19px 19px;
+      min-height: 195px;
+    }
+
+    &__show-more {
+      display: flex;
+    }
+  }
+}
+
+@include respond-to ($breakpoint-sm-anc) {
+  .products {
+    $offsets: 0;
+
+    &__items {
+      width: calc((100% - (#{$gap} * #{$offsets})) / (#{$offsets} + 1));
+    }
+
+    &__image {
+      min-height: 466px;
+    }
+  }
+}
+
+@include respond-to ($breakpoint-xs) {
+  .products {
+    &__item {
+      padding: 0 19px;
+      padding-top: 39px;
+    }
+  }
+}
+
+@include respond-to ($breakpoint-xxs) {
+  .products {
+    &__image {
+      min-height: 309px;
+    }
+  }
+}

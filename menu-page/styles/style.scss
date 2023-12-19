@@ -1,0 +1,151 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.products {
+  $offsets: 3;
+
+  &__top {
+    margin: 0 auto;
+    max-width: 56%;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__tab {
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+  }
+
+  &__btn {
+    padding: 7px 18px 7px 8px;
+    align-items: center;
+    border: 1px solid $border-light;
+    border-radius: $main-border;
+    transition: background-color 0.3s ease-in;
+    @include hover-supported {
+      &:hover {
+        background-color: $background-container;
+
+        & .products__icon {
+          background-color: $background-body;
+        }
+
+        & .products__text {
+          color: $text-light;
+        }
+      }
+    }
+
+    &--active {
+      background-color: $background-container;
+
+      & .products__icon {
+        background-color: $background-body;
+      }
+
+      & .products__text {
+        color: $text-light;
+      }
+    }
+  }
+
+  &__text {
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+    transition: color 0.3s  ease-in;
+  }
+
+  &__icon {
+    margin-right: 8px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $main-border;
+    background: $border-light;
+    transition: background-color 0.3s  ease-in;
+  }
+
+  &__item {
+    padding-top: 39px;
+    gap: $gap;
+    flex-wrap: wrap;
+  }
+
+  &__items {
+    width: calc((100% - (#{$gap} * #{$offsets})) / (#{$offsets} + 1));
+    overflow: hidden;
+    border-radius: $gap;
+    border: 1px solid $border-light;
+    transition: transform 0.3s ease;
+
+    @include hover-supported {
+      &:hover .products__image img {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__image {
+    position: relative;
+    min-height: 309px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    overflow: hidden;
+
+    & img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-height: 100%;
+      transform: translate(-50%, -50%) scale(1.1);
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__info {
+    padding: 20px 19px 19px;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    color: $text-dark;
+  }
+
+  &__subtitle,
+  &__price {
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  &__descr {
+    line-height: 1.5;
+  }
+
+  &__price {
+    margin-top: auto;
+  }
+
+  &__show-more {
+    margin: 0 auto;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 1px solid $border-dark;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+}
