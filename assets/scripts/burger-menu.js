@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
   menuLinks.forEach((link) =>
     link.addEventListener('click', () => {
       header.classList.remove('open')
+      hide.classList.remove('hidden');
     })
   )
 });
