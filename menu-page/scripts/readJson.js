@@ -94,3 +94,17 @@ async function getProducts() {
 
 // Вызываем функцию для получения и отображения продуктов
 getProducts();
+
+
+document.getElementById('show-more').addEventListener('click', function() {
+  // Получаем все элементы с классом 'element'
+  var elements = document.querySelectorAll('.products__items');
+
+  // Добавляем класс 'active' к каждому элементу
+  elements.forEach(function(element) {
+    element.classList.add('visibles');
+  });
+
+  // Исчезаем кнопку
+  this.style.display = 'none';
+});

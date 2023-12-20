@@ -32,6 +32,10 @@
       &:nth-child(n + 5) {
         display: none;
       }
+
+      &:nth-child(n + 5).visibles {
+        display: block;
+      }
     }
 
     &__info {

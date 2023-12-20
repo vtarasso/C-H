@@ -142,6 +142,9 @@
   .products__items:nth-child(n+5) {
     display: none;
   }
+  .products__items:nth-child(n+5).visibles {
+    display: block;
+  }
   .products__info {
     padding: 20px 19px 19px;
     min-height: 195px;
