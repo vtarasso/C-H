@@ -138,13 +138,27 @@
   gap: 12px;
 }
 .coffee .pagination__line {
+  position: relative;
   width: 40px;
   height: 4px;
   background-color: #c1b6ad;
   border-radius: 100px;
 }
 .coffee .pagination__line--active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 4px;
   background-color: #665f55;
+  border-radius: 100px;
+}
+.coffee .pagination__line--active.filled {
+  width: 100%;
+  transition: width 7s;
+}
+.coffee .pagination__line--active.non-filled {
+  transition: none;
 }
 
 /* About - section */

@@ -176,13 +176,25 @@
     gap: 12px;
 
     &__line {
+      position: relative;
       width: 40px;
       height: 4px;
       background-color: $border-light;
       border-radius: $main-gap;
 
       &--active {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 4px;
         background-color: $border-dark;
+        border-radius: $main-gap;
+
+        &.filled {
+          width: 100%;
+          transition: width 7s;
+        }
       }
     }
   }

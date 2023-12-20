@@ -1,5 +1,6 @@
 let shiftSlide = 0;
 const sliderContainer = document.querySelector('.coffee__slider-wrapper');
+const paginationLines = document.querySelectorAll('.pagination__line');
 
 // Функция для переключения слайдов
 function showSlide(slideSide) {
@@ -15,14 +16,34 @@ function showSlide(slideSide) {
     }
   }
 
-  sliderContainer.style.left = -shiftSlide + '%'
-};
+  sliderContainer.style.left = -shiftSlide + '%';
+
+  // Обновляем активные линии
+  const activeIndex = shiftSlide / 100;
+  updatePagination(activeIndex);
+}
+
+// Функция для заполнения пагинации
+function updatePagination(activeIndex) {
+  paginationLines.forEach((line, index) => {
+    const isActive = index === activeIndex;
+    const activeLine = line.querySelector('.pagination__line--active');
+
+    if (isActive) {
+      activeLine.classList.add('filled');
+    } else {
+      activeLine.classList.remove('filled');
+    }
+  });
+}
 
 // Функция для автоматического переключения слайдов
 function autoSlides() {
   showSlide('next');
 }
 
+// Начинаем автоматическое переключение слайдов сразу после загрузки страницы
+updatePagination(0); // Установка начального активного слайда
 // Интервал для переключения слайдов каждые 7 секунд
 let timeInterval = setInterval(autoSlides, 7000);
 
@@ -42,5 +63,3 @@ document.querySelector('#next').addEventListener('click', () => {
   showSlide('next');
   resetTime();
 });
-
-console.log('Если вы увидели эту надпись, значит скрипт прогрузился. Пожалуйста дождитесь загрузки HTML')
