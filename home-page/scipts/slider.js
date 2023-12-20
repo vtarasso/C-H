@@ -1,6 +1,7 @@
 let shiftSlide = 0;
 const sliderContainer = document.querySelector('.coffee__slider-wrapper');
 const paginationLines = document.querySelectorAll('.pagination__line');
+const slider = document.querySelector('.coffee__slider');
 
 // Функция для переключения слайдов
 function showSlide(slideSide) {
@@ -39,13 +40,32 @@ function updatePagination(activeIndex) {
 
 // Функция для автоматического переключения слайдов
 function autoSlides() {
-  showSlide('next');
+  const activeIndex = shiftSlide / 100;
+  const activeLine = paginationLines[activeIndex].querySelector('.pagination__line--active');
+// нужно будет переделать, чтобы при наведении останавливалась полоса загрузки и потом продолжалась
+  if (activeLine && activeLine.offsetWidth === activeLine.scrollWidth) {
+    showSlide('next');
+  }
 }
 
 // Начинаем автоматическое переключение слайдов сразу после загрузки страницы
 updatePagination(0); // Установка начального активного слайда
 // Интервал для переключения слайдов каждые 7 секунд
 let timeInterval = setInterval(autoSlides, 7000);
+
+// плохо отрабатывает при наведении, если пройти по всем слайдам, то потом они перестают сами переключатся
+// // Обработчик события для остановки переключения при наведении мыши
+// slider.addEventListener('mouseenter', () => {
+//   clearInterval(timeInterval);
+//   updatePagination(shiftSlide / 100);
+// });
+
+// // Обработчик события для возобновления переключения после ухода мыши
+// slider.addEventListener('mouseleave', () => {
+//   autoSlides();
+//   // Обновляем пагинацию
+// });
+
 
 // Сброс таймера
 function resetTime() {

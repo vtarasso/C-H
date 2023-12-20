@@ -155,10 +155,8 @@
 }
 .coffee .pagination__line--active.filled {
   width: 100%;
-  transition: width 7s;
-}
-.coffee .pagination__line--active.non-filled {
-  transition: none;
+  transition-duration: 7s;
+  transition-property: width;
 }
 
 /* About - section */

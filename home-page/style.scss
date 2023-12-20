@@ -193,7 +193,8 @@
 
         &.filled {
           width: 100%;
-          transition: width 7s;
+          transition-duration: 7s;
+          transition-property: width;
         }
       }
     }
