@@ -83,3 +83,45 @@ document.querySelector('#next').addEventListener('click', () => {
   showSlide('next');
   resetTime();
 });
+
+// swipe to slide
+
+// Переменные для отслеживания начальной и конечной координаты X при касании
+let touchStartX = 0;
+let touchEndX = 0;
+
+// Слушатель события touchstart: сохраняет начальную координату X при касании
+slider.addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX;
+});
+
+// Слушатель события touchmove: сохраняет текущую координату X при движении пальца
+slider.addEventListener('touchmove', (e) => {
+  touchEndX = e.touches[0].clientX;
+});
+
+// Слушатель события touchend: вызывает функцию handleSwipe() при отрыве пальца от экрана
+slider.addEventListener('touchend', () => {
+  handleSwipe();
+});
+
+// Функция для обработки свайпа
+function handleSwipe() {
+  const swipeThreshold = 50; // Порог для определения свайпа
+
+  const deltaX = touchEndX - touchStartX; // Разница между начальной и конечной координатами X
+
+  // Проверка направления свайпа и вызов соответствующих функций
+  if (deltaX > swipeThreshold) {
+    // Свайп влево
+    showSlide('prev');
+    resetTime();
+  } else if (deltaX < -swipeThreshold) {
+    // Свайп вправо
+    showSlide('next');
+    resetTime();
+  }
+}
+
+// Добавляем событие на изменение размера окна (например, поворот устройства)
+window.addEventListener('resize', handleSwipe);
