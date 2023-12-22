@@ -224,7 +224,7 @@
 
     @include hover-supported {
       &:hover .about__img {
-        transform: translate(-50%, -50%) scale(1);
+        transform: scale(1);
       }
     }
 
@@ -233,17 +233,17 @@
     }
 
     &--small {
-      min-height: 430px;
+      max-height: 430px;
     }
   }
 
   &__img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-height: 100%;
-    transform: translate(-50%, -50%) scale(1.1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
     transition: transform 0.3s ease;
+    border-radius: 30px;
   }
 }
 

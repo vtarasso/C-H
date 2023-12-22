@@ -53,12 +53,13 @@
   .products {
     $offsets: 0;
 
-    &__items {
-      width: calc((100% - (#{$gap} * #{$offsets})) / (#{$offsets} + 1));
+    &__item {
+      justify-content: center;
     }
 
-    &__image {
-      min-height: 466px;
+    &__items {
+      // width: calc((100% - (#{$gap} * #{$offsets})) / (#{$offsets} + 1));
+      width: 310px;
     }
   }
 }
@@ -72,10 +73,10 @@
   }
 }
 
-@include respond-to ($breakpoint-xxs) {
-  .products {
-    &__image {
-      min-height: 309px;
-    }
-  }
-}
+// @include respond-to ($breakpoint-xxs) {
+//   .products {
+//     &__image {
+//       min-height: 309px;
+//     }
+//   }
+// }
