@@ -67,7 +67,7 @@
 }
 @media (hover: hover) and (min-width: 992px) {
   .products__items:hover .products__image img {
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
   }
 }
 .products__link {
@@ -78,8 +78,11 @@
 .products__image {
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
+  overflow: hidden;
 }
 .products__image img {
+  height: 100%;
+  transform: scale(1.1);
   object-fit: cover;
   width: 100%;
   transition: transform 0.3s ease;
