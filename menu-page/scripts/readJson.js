@@ -118,8 +118,33 @@ async function getProducts() {
       productsContainer.innerHTML += productCard;
     });
 
-    // Показываем кнопку "Показать еще" после загрузки карточек
-    document.getElementById('show-more').style.display = 'flex';
+
+    // Функция, которая будет отображать или скрывать кнопку "Показать еще" в зависимости от ширины экрана
+    function showMoreButtonBasedOnScreenWidth() {
+      var showMoreButton = document.getElementById('show-more');
+      
+      // Получаем ширину окна
+      var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+      // Определяем пороговое значение ширины, при котором кнопка будет видна
+      var thresholdWidth = 965;
+
+      // Если ширина окна меньше порогового значения, показываем кнопку, иначе скрываем
+      if (windowWidth < thresholdWidth) {
+        showMoreButton.style.display = 'flex';
+      } else {
+        showMoreButton.style.display = 'none';
+      }
+    }
+
+    // Вызываем функцию при загрузке страницы и при изменении размера окна
+    window.onload = showMoreButtonBasedOnScreenWidth;
+    window.onresize = showMoreButtonBasedOnScreenWidth;
+
+    // Показываем кнопку "Показать еще" после загрузки карточек, если ширина экрана меньше 965 пикселей
+    showMoreButtonBasedOnScreenWidth();
+    // // Показываем кнопку "Показать еще" после загрузки карточек
+    // document.getElementById('show-more').style.display = 'flex';
   }
 
   // Получаем список кнопок категорий
