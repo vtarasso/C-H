@@ -94,6 +94,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    cursor: pointer;
   }
 
   &__image {
@@ -152,5 +153,25 @@
     border: 1px solid $border-dark;
     border-radius: 100%;
     cursor: pointer;
+  }
+}
+
+.pop-up {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(64, 63, 61, 0.8);
+  z-index: 2000;
+
+  &__container {
+    padding: 16px;
+    max-width: 800px;
+    background-color: $background-body;
+    border-radius: 40px;
   }
 }
