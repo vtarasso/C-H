@@ -68,7 +68,13 @@ async function getProducts() {
           </div>
           <div class="pop-up__size">
             <h4 class="pop-up__subtitle">Size</h4>
-            ${Object.keys(product.sizes).map(size => `<p>${size}: ${product.sizes[size].size}</p>`).join('')}
+            <div class="pop-up__size--wrapper flex">
+            ${Object.keys(product.sizes).map(size => `
+              <button class="size-button" data-size="${size}">
+                <span class="pop-up__size--letter">${size}</span> ${product.sizes[size].size}
+              </button>`).join('')
+            }
+            </div>
           </div>
           <div class="pop-up__additives">
             <h4 class="pop-up__subtitle">Additives</h4>
@@ -100,6 +106,21 @@ async function getProducts() {
           popup.style.display = "none";
         }
       }
+
+      // Добавляем обработчик событий для кнопок размеров
+      const sizeButtons = document.querySelectorAll('.size-button');
+      sizeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const selectedSize = button.dataset.size;
+          const selectedSizePrice = product.sizes[selectedSize]['add-price'];
+
+          // Обновляем цену в модальном окне
+          const popUpPrice = document.querySelector('.pop-up__price');
+          popUpPrice.textContent = `$ ${((parseFloat(product.price) + parseFloat(selectedSizePrice)).toFixed(2))}`;
+
+  
+        });
+      });
     }
 
     // Функция, которая будет отображать или скрывать кнопку "Показать еще" в зависимости от ширины экрана
